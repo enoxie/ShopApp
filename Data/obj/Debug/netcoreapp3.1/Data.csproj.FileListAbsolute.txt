@@ -1,0 +1,13 @@
+D:\dev\source\repos\.NET Core\ShopApp\Data\bin\Debug\netcoreapp3.1\Data.deps.json
+D:\dev\source\repos\.NET Core\ShopApp\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.json
+D:\dev\source\repos\.NET Core\ShopApp\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.dev.json
+D:\dev\source\repos\.NET Core\ShopApp\Data\bin\Debug\netcoreapp3.1\Data.dll
+D:\dev\source\repos\.NET Core\ShopApp\Data\bin\Debug\netcoreapp3.1\Data.pdb
+D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfoInputs.cache
+D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.cs
+D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.csproj.CopyComplete
+D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.dll
+D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.pdb
+D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
+D:\dev\source\repos\.NET Core\ShopApp\Data\bin\Debug\netcoreapp3.1\Entity.dll
+D:\dev\source\repos\.NET Core\ShopApp\Data\bin\Debug\netcoreapp3.1\Entity.pdb

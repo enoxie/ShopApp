@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ShopAppEntity
-build_property.ProjectDir = d:\dev\source\repos\.NET Core\ShopApp\ShopAppEntity\
+build_property.ProjectDir = d:\dev\source\repos\.NET Core\ShopApp\Entity\

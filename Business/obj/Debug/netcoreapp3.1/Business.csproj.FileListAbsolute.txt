@@ -1,0 +1,13 @@
+D:\dev\source\repos\.NET Core\ShopApp\Business\bin\Debug\netcoreapp3.1\Business.deps.json
+D:\dev\source\repos\.NET Core\ShopApp\Business\bin\Debug\netcoreapp3.1\Business.dll
+D:\dev\source\repos\.NET Core\ShopApp\Business\bin\Debug\netcoreapp3.1\Business.pdb
+D:\dev\source\repos\.NET Core\ShopApp\Business\bin\Debug\netcoreapp3.1\Data.dll
+D:\dev\source\repos\.NET Core\ShopApp\Business\bin\Debug\netcoreapp3.1\Entity.dll
+D:\dev\source\repos\.NET Core\ShopApp\Business\bin\Debug\netcoreapp3.1\Entity.pdb
+D:\dev\source\repos\.NET Core\ShopApp\Business\bin\Debug\netcoreapp3.1\Data.pdb
+D:\dev\source\repos\.NET Core\ShopApp\Business\obj\Debug\netcoreapp3.1\Business.csprojAssemblyReference.cache
+D:\dev\source\repos\.NET Core\ShopApp\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfoInputs.cache
+D:\dev\source\repos\.NET Core\ShopApp\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfo.cs
+D:\dev\source\repos\.NET Core\ShopApp\Business\obj\Debug\netcoreapp3.1\Business.csproj.CopyComplete
+D:\dev\source\repos\.NET Core\ShopApp\Business\obj\Debug\netcoreapp3.1\Business.dll
+D:\dev\source\repos\.NET Core\ShopApp\Business\obj\Debug\netcoreapp3.1\Business.pdb

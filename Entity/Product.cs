@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShopApp.Models
+namespace Entity
 {
     public class Product
     {
@@ -14,6 +14,8 @@ namespace ShopApp.Models
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public bool IsApproved { get; set; }
-        public int? CategoryId { get; set; }
+        public List<ProductCategory> ProductCategories { get; set; }
+
+
     }
 }

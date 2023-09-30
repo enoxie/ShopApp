@@ -1,30 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\ShopAppEntity\\ShopAppEntity.csproj": {}
+    "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\Entity\\ShopAppEntity.csproj": {}
   },
   "projects": {
-    "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\ShopAppEntity\\ShopAppEntity.csproj": {
+    "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\Entity\\ShopAppEntity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\ShopAppEntity\\ShopAppEntity.csproj",
+        "projectUniqueName": "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\Entity\\ShopAppEntity.csproj",
         "projectName": "ShopAppEntity",
-        "projectPath": "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\ShopAppEntity\\ShopAppEntity.csproj",
+        "projectPath": "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\Entity\\ShopAppEntity.csproj",
         "packagesPath": "C:\\Users\\Jemap\\.nuget\\packages\\",
-        "outputPath": "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\ShopAppEntity\\obj\\",
+        "outputPath": "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jemap\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "netcoreapp3.1": {
             "projectReferences": {}
           }
         },
@@ -35,16 +34,14 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "netcoreapp3.1": {
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -53,7 +50,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

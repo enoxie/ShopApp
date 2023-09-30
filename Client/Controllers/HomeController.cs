@@ -1,20 +1,27 @@
 using System;
 using System.Collections.Generic;
+using Business.Abstract;
+using Data.Abstract;
 using Microsoft.AspNetCore.Mvc;
-using ShopApp.Data;
-using ShopApp.Models;
+
+
+
 namespace ShopApp.Controllers
 {
     public class HomeController : Controller
     {
+        private IProductService _productService;
 
+        public HomeController(IProductService productService)
+        {
+            this._productService = productService;
+        }
         public IActionResult Index()
         {
 
             var productView = new ProductViewModel()
             {
-                Products = ProductRepository.Products
-
+                Products = _productService.GetAll()
             };
             return View(productView);
         }

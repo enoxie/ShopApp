@@ -1,6 +1,6 @@
 
 using System.Collections.Generic;
-using ShopApp.Models;
+using Entity;
 
 
 public class ProductViewModel

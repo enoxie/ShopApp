@@ -17,11 +17,11 @@
         <label for="ImageUrl">ImageUrl</label>
         <input asp-for="ImageUrl" value="@Model.ImageUrl" class="form-control" autocomplete="off">
     </div>
-    <div class="form-group">
-        <label for="CategoryId">CategoryId</label>
-        <select asp-for="CategoryId" value="@Model.CategoryId" asp-items="@ViewBag.Categories" class="form-control">
-            <option selected disabled>Seçiniz</option>
-        </select>
-    </div>
+    @* <div class="form-group">
+    <label for="CategoryId">CategoryId</label>
+    <select asp-for="CategoryId" value="@Model.CategoryId" asp-items="@ViewBag.Categories" class="form-control">
+    <option selected disabled>Seçiniz</option>
+    </select>
+    </div> *@
     <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>
