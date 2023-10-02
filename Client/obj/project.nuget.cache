@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NhlXN0uGGJMI1K0WzfO4tbx0410goTFtXPwg4oNJxIykujAi2Xy8mbP9k9QrESDpoD8zAw30tUYoloJ4y1WLuw==",
+  "dgSpecHash": "v8Wfzcyb41Bvz3NPi5rkRRHdrzTnouty4DYi2LjcEbqQ6Vz6IkRqG1QEQGZsTV9HI/QZaJJ44ifbmTYruAMNEw==",
   "success": true,
-  "projectFilePath": "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\Client\\ShopApp.csproj",
+  "projectFilePath": "D:\\dev\\source\\repos\\.NET Core\\ShopApp\\Client\\Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jemap\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\Jemap\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

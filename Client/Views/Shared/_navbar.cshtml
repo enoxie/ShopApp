@@ -1,19 +1,26 @@
 <nav class="navbar bg-danger navbar-dark navbar-expand-sm" data-bs-theme="dark">
     <div class="container">
-        <ul class="navbar-nav">
+        <a href="/" class="navbar-brand">Shop App</a>
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a href="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-                <a href="/product/list" class="nav-link">Products</a>
+                <a href="/products" class="nav-link">Products</a>
             </li>
-            <li class="nav-item"><a href="/product/create" class="nav-link">Add Product</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Delete Product </a></li>
+            <li class="nav-item">
+                <a asp-controller="shop" asp-action="cart" class="nav-link">Cart</a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="shop" asp-action="orders" class="nav-link">Orders </a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="admin" asp-action="create-product" class="nav-link">Add Product</a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="admin" asp-action="product-list" class="nav-link">Admin Products</a>
+            </li>
         </ul>
-        <form action="/product/list" class="d-flex">
-            <input name="q" type="text" class="form-control me-2" autocomplete="off" placeholder="Search">
-            <button type="submit" class="btn btn-outline-light ">Search</button>
-        </form>
 
 
 

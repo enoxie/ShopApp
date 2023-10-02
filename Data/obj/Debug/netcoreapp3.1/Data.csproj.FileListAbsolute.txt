@@ -8,6 +8,6 @@ D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.Assembly
 D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.csproj.CopyComplete
 D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.dll
 D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.pdb
-D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
 D:\dev\source\repos\.NET Core\ShopApp\Data\bin\Debug\netcoreapp3.1\Entity.dll
 D:\dev\source\repos\.NET Core\ShopApp\Data\bin\Debug\netcoreapp3.1\Entity.pdb
+D:\dev\source\repos\.NET Core\ShopApp\Data\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache

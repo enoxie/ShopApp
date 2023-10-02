@@ -19,8 +19,22 @@ using Entity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\dev\source\repos\.NET Core\ShopApp\Client\Views\_ViewImports.cshtml"
+using Client.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\dev\source\repos\.NET Core\ShopApp\Client\Views\_ViewImports.cshtml"
+using Client.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"138315c8e6d14d84a2a3ab1c1d32f1cf0a45bac8", @"/Views/Shared/_categories.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"13fe61f47824b0197540fd0c7519cd6a98491313", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9b447503cea2da68248fa0b6dcee2fb021810adb", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__categories : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Category>>
     {
         #pragma warning disable 1998

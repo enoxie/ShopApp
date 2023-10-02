@@ -4,52 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ShopApp</title>
     <link rel="stylesheet" href="/modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/style.css">
 </head>
 
 <body>
-    @if (IsSectionDefined("MessageBox"))
-    {
-        @RenderSection("MessageBox", false)
-    }
-    else
-    {
-        <div class="alert alert-success text-center m-0">
-
-            Welcome to ShopApp!</div>
-    }
-
-
     @await Html.PartialAsync("_navbar")
-    @RenderSection("Header", false)
 
     <main class="my-5">
         <div class=" container">
-            @if (IsSectionDefined("Categories"))
-            {
-                <div class="row">
-                    <div class="col-md-3">
-                        @RenderSection("Categories", false)
-                    </div>
-                    <div class="col-md-9">
-                        @RenderBody()
-                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @RenderBody()
                 </div>
-            }
-            else
-            {
-                <div class="row">
-                    <div class="col-md-12">
-                        @RenderBody()
-                    </div>
-                </div>
-            }
+            </div>
         </div>
     </main>
 
     <footer class="py-5 bg-dark text-white-50 text-center">Shop App | 2023</footer>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     @RenderSection("Scripts", false)
 </body>
 

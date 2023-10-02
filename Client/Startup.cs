@@ -23,7 +23,10 @@ namespace ShopApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IProductRepository, EFCoreProductRepository>();
+            services.AddScoped<ICategoryRepository, EFCoreCategoryRepository>();
+
             services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<ICategoryService, CategoryManager>();
             services.AddControllersWithViews();
         }
 
@@ -44,6 +47,33 @@ namespace ShopApp
             }
 
             app.UseRouting();
+
+
+            app.UseEndpoints(endpoints =>
+                                  {
+                                      endpoints.MapControllerRoute(
+                                          name: "search",
+                                          pattern: "search",
+                                          defaults: new { controller = "shop", action = "search" }
+                                      );
+                                  });
+            app.UseEndpoints(endpoints =>
+                      {
+                          endpoints.MapControllerRoute(
+                              name: "productdetails",
+                              pattern: "product/{url}",
+                              defaults: new { controller = "shop", action = "details" }
+                          );
+                      });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "products",
+                    pattern: "products/{category?}",
+                    defaults: new { controller = "shop", action = "list" }
+                );
+            });
 
             app.UseEndpoints(endpoints =>
             {

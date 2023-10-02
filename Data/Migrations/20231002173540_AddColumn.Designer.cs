@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20230930182003_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231002173540_AddColumn")]
+    partial class AddColumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,9 @@ namespace Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
                         .HasColumnType("TEXT");
 
                     b.HasKey("CategoryId");
@@ -50,11 +53,17 @@ namespace Data.Migrations
                     b.Property<bool>("IsApproved")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IsHome")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.Property<double?>("Price")
                         .HasColumnType("REAL");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ProductId");
 

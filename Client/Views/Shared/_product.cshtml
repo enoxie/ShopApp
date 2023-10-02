@@ -3,17 +3,15 @@
     <img src="~/images/@Model.ImageUrl" alt="" class="card-image-top h-100">
     <div class="card-body">
         <h4 class="card-title">@Model.Name</h4>
-        <p class="card-text">@Model.Price TL</p>
-        <a asp-controller="product" asp-action="details" asp-route-id="@Model.ProductId"
-            class="btn btn-primary btn-sm">İncele</a>
-        <a asp-controller="product" asp-action="edit" asp-route-id="@Model.ProductId"
-            class="btn btn-primary btn-sm">Edit</a>
-
-        <form method="POST" action="/product/delete" style="display:inline;">
-            <input type="hidden" name="ProductId" value="@Model.ProductId">
-            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-        </form>
-
+        <small class="text-muted">
+            ₺@Model.Price
+        </small>
+    </div>
+    <div class="card-footer text-center">
+        <a asp-controller="shop" asp-action="details" asp-route-url="@Model.Url"
+            class="btn btn-primary btn-sm">Details</a>
+        <a asp-controller="shop" asp-action="add-to-cart" asp-route-url="@Model.Url" class="btn btn-primary btn-sm">Add
+            to cart</a>
     </div>
 
 </div>

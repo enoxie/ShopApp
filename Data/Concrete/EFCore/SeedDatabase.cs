@@ -24,22 +24,40 @@ namespace Data.Concrete.EFCore
                 if (db.Products.Count() == 0)
                 {
                     db.Products.AddRange(Products);
+                    db.AddRange(ProductCategories);
                 }
                 db.SaveChanges();
             }
         }
         private static Category[] Categories = {
-        new Category(){Name="Telefon"},
-        new Category(){Name="Bilgisayar"},
-        new Category(){Name="Tablet"}
+        new Category(){Name="Telefon", Url="telefon"},
+        new Category(){Name="Bilgisayar",Url="bilgisayar"},
+        new Category(){Name="Tablet",Url="tablet"},
+        new Category(){Name="Elektronik",Url="elektronik"},
+        new Category(){Name="Beyaz Eşya",Url="beyaz-esya"},
     };
         private static Product[] Products = {
-        new Product(){Name="Iphone 15 Pro Max", Price=98000,ImageUrl="1.png",Description="İyi telefon",IsApproved=true},
-        new Product(){Name="Iphone 14 Pro Max", Price=68000,ImageUrl="2.png",Description="İyi telefon",IsApproved=true},
-        new Product(){Name="Iphone 13 Pro Max", Price=58000,ImageUrl="3.png",Description="İyi telefon",IsApproved=true},
-        new Product(){Name="Iphone 12 Pro", Price=48000,ImageUrl="4.png",Description="İyi telefon",IsApproved=true},
-        new Product(){Name="Iphone 11", Price=38000,ImageUrl="5.png",Description="İyi telefon",IsApproved=false},
-        new Product(){Name="Iphone 10", Price=18000,ImageUrl="6.png",Description="İyi telefon",IsApproved=false},
+        new Product(){Name="Iphone 15 Pro Max", Url="iphone-15-pro-max",Price=98000,ImageUrl="1.png",Description="İyi telefon",IsApproved=true},
+        new Product(){Name="Iphone 14 Pro Max",  Url="iphone-14-pro-max",Price=68000,ImageUrl="2.png",Description="İyi telefon",IsApproved=true},
+        new Product(){Name="Iphone 13 Pro Max",  Url="iphone-13-pro-max",Price=58000,ImageUrl="3.png",Description="İyi telefon",IsApproved=true},
+        new Product(){Name="Iphone 12 Pro",  Url="iphone-12-pro",Price=48000,ImageUrl="4.png",Description="İyi telefon",IsApproved=true},
+        new Product(){Name="Iphone 11",  Url="iphone-11",Price=38000,ImageUrl="5.png",Description="İyi telefon",IsApproved=false},
+        new Product(){Name="Iphone 10",  Url="iphone-10",Price=18000,ImageUrl="6.png",Description="İyi telefon",IsApproved=false},
+        new Product(){Name="Tulpar T5 V23.3 15,6\" Oyun Bilgisayarı", Url="tulpar-t5", Price=33599,ImageUrl="4.png",Description="24\" Çerçevesiz Flat Ekran 16:9, 144 Hz Ekran Yenileme Hızı, 1 Ms Tepki Süresi, FAST IPS Panel, 1920x1080 FHD Çözünürlük, Dikey Kullanım İmkanı, HDR10 ve MPRT Teknolojileri",IsApproved=true},
+        new Product(){Name="Aryond A24 V1.1 144 Hz Gaming Monitör",  Url="aryond-a24",Price=4999,ImageUrl="5.png",Description="24\" Çerçevesiz Flat Ekran 16:9, 144 Hz Ekran Yenileme Hızı, 1 Ms Tepki Süresi, FAST IPS Panel, 1920x1080 FHD Çözünürlük, Dikey Kullanım İmkanı, HDR10 ve MPRT Teknolojileri",IsApproved=true},
     };
+
+        private static ProductCategory[] ProductCategories = {
+            new ProductCategory(){Product= Products[0],Category=Categories[0]},
+            new ProductCategory(){Product= Products[1],Category=Categories[0]},
+            new ProductCategory(){Product= Products[2],Category=Categories[0]},
+            new ProductCategory(){Product= Products[3],Category=Categories[0]},
+            new ProductCategory(){Product= Products[4],Category=Categories[0]},
+            new ProductCategory(){Product= Products[5],Category=Categories[0]},
+            new ProductCategory(){Product= Products[6],Category=Categories[1]},
+            new ProductCategory(){Product= Products[7],Category=Categories[1]},
+
+
+        };
     }
 }
