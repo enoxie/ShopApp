@@ -50,21 +50,72 @@ namespace ShopApp
 
 
             app.UseEndpoints(endpoints =>
-                                  {
-                                      endpoints.MapControllerRoute(
-                                          name: "search",
-                                          pattern: "search",
-                                          defaults: new { controller = "shop", action = "search" }
-                                      );
-                                  });
+            {
+                endpoints.MapControllerRoute(
+                    name: "admincategorylist",
+                    pattern: "admin/categories",
+                    defaults: new { controller = "admin", action = "categorylist" }
+                );
+            });
             app.UseEndpoints(endpoints =>
-                      {
-                          endpoints.MapControllerRoute(
-                              name: "productdetails",
-                              pattern: "product/{url}",
-                              defaults: new { controller = "shop", action = "details" }
-                          );
-                      });
+            {
+                endpoints.MapControllerRoute(
+                    name: "admineditcategory",
+                    pattern: "admin/categories/{id?}",
+                    defaults: new { controller = "admin", action = "editcategory" }
+                );
+            });
+            app.UseEndpoints(endpoints =>
+          {
+              endpoints.MapControllerRoute(
+                  name: "admincreatecategory",
+                  pattern: "admin/category/create",
+                  defaults: new { controller = "admin", action = "createcategory" }
+              );
+          });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "adminproductlist",
+                    pattern: "admin/products",
+                    defaults: new { controller = "admin", action = "productlist" }
+                );
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "admineditprocut",
+                    pattern: "admin/products/{id?}",
+                    defaults: new { controller = "admin", action = "editproduct" }
+                );
+            });
+            app.UseEndpoints(endpoints =>
+          {
+              endpoints.MapControllerRoute(
+                  name: "admincreateproduct",
+                  pattern: "admin/product/create",
+                  defaults: new { controller = "admin", action = "createproduct" }
+              );
+          });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "search",
+                    pattern: "search",
+                    defaults: new { controller = "shop", action = "search" }
+                );
+            });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "productdetails",
+                    pattern: "product/{url}",
+                    defaults: new { controller = "shop", action = "details" }
+                );
+            });
 
             app.UseEndpoints(endpoints =>
             {

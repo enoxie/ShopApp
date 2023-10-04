@@ -28,13 +28,13 @@ using Client.Models;
 #nullable disable
 #nullable restore
 #line 4 "D:\dev\source\repos\.NET Core\ShopApp\Client\Views\_ViewImports.cshtml"
-using Client.ViewModels;
+using Newtonsoft.Json;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"84e06b2593cd534a0ea3efb5defd6bee2fda2dbd", @"/Views/Shared/Components/Categories/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9b447503cea2da68248fa0b6dcee2fb021810adb", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9c35a934326cc3ef09ae6250bfa3b88ecfb33db4", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_Categories_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Category>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "shop", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -85,7 +85,7 @@ WriteAttributeValue(" ", 131, ViewBag.SelectedCategory ==  "0"  ? "active" : "" 
 #line hidden
 #nullable disable
             WriteLiteral("        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84e06b2593cd534a0ea3efb5defd6bee2fda2dbd4880", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84e06b2593cd534a0ea3efb5defd6bee2fda2dbd4878", async() => {
 #nullable restore
 #line 12 "D:\dev\source\repos\.NET Core\ShopApp\Client\Views\Shared\Components\Categories\Default.cshtml"
                 Write(item.Name);

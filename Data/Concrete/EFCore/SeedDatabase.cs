@@ -30,11 +30,11 @@ namespace Data.Concrete.EFCore
             }
         }
         private static Category[] Categories = {
-        new Category(){Name="Telefon", Url="telefon"},
-        new Category(){Name="Bilgisayar",Url="bilgisayar"},
-        new Category(){Name="Tablet",Url="tablet"},
-        new Category(){Name="Elektronik",Url="elektronik"},
-        new Category(){Name="Beyaz Eşya",Url="beyaz-esya"},
+        new Category(){Name="Telefon", Url="telefon",Description="Telefon kategorisi açıklama alanı burasıdır."},
+        new Category(){Name="Bilgisayar",Url="bilgisayar",Description="Bilgisayar kategorisi açıklama alanı burasıdır."},
+        new Category(){Name="Tablet",Url="tablet",Description="Tablet kategorisi açıklama alanı burasıdır."},
+        new Category(){Name="Elektronik",Url="elektronik",Description="Elektronik kategorisi açıklama alanı burasıdır."},
+        new Category(){Name="Beyaz Eşya",Url="beyaz-esya",Description="Beyaz Eşya kategorisi açıklama alanı burasıdır."},
     };
         private static Product[] Products = {
         new Product(){Name="Iphone 15 Pro Max", Url="iphone-15-pro-max",Price=98000,ImageUrl="1.png",Description="İyi telefon",IsApproved=true},

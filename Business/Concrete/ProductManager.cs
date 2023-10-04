@@ -31,7 +31,7 @@ namespace Business.Concrete
             return _productRepository.GetAll();
         }
 
-        public Product GetById(int id)
+        public Product GetProductById(int id)
         {
             return _productRepository.GetById(id);
         }
@@ -63,7 +63,17 @@ namespace Business.Concrete
 
         public void Update(Product entity)
         {
-            throw new NotImplementedException();
+            _productRepository.Update(entity);
+        }
+
+        public Product GetProductByIdWithCategories(int id)
+        {
+            return _productRepository.GetProductByIdWithCategories(id);
+        }
+
+        public void Update(Product entity, int[] categoryId)
+        {
+            _productRepository.Update(entity, categoryId);
         }
     }
 }

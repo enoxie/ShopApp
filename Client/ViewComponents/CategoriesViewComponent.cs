@@ -28,7 +28,7 @@ namespace ShopApp.ViewComponents
                 }
 
             }
-            return View(_categoryService.GetAll());
+            return View(_categoryService.GetAllCategories());
         }
     }
 }

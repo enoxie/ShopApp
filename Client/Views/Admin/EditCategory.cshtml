@@ -1,0 +1,83 @@
+@model CategoryModel
+<h1 class="h3">Edit Category</h1>
+<hr>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="admin" asp-action="EditCategory" method="POST">
+            <input type="hidden" name="CategoryId" value="@Model.CategoryId">
+            <div class="mb-3">
+                <label asp-for="@Model.CategoryId" class="form-label"></label>
+                <input class="form-control" asp-for="@Model.CategoryId" disabled>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Name" class="form-label"></label>
+                <input class="form-control" asp-for="@Model.Name">
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Url" class="form-label"></label>
+                <input class="form-control" asp-for="@Model.Url">
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Description" class="form-label"></label>
+                <textarea class="form-control" asp-for="@Model.Description"> </textarea>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Save Category</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+<div class="row">
+    <div class="col-md-12">
+         @if (Model.Products.Count() > 0)
+                {            
+        <table class="table table-bordered table-responsive table-sm align-middle mt-4">
+            <thead>
+                <tr class="text-center">
+                    <td>Product ID</td>
+                    <td>Product Image</td>
+                    <td>Product Name</td>
+                    <td>Product Price</td>
+                    <td style="width:150px;">Actions</td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr class="text-center">
+                            <td>@product.ProductId</td>
+                            <td><img src="~/images/@product.ImageUrl" width="40" height="40"></td>
+                            <td>@product.Name</td>
+                            <td>₺@product.Price</td>
+                            <td>
+                                <a href="/admin/products/@product.ProductId" class="btn btn-primary btn-sm me-2">Edit</a>
+                                    <form action="/admin/deleteproductfromcategory" class="d-inline" method="POST"> 
+                                    <input type="hidden" name="ProductId" value="@product.ProductId">
+                                    <input type="hidden" name="CategoryId" value="@Model.CategoryId">
+                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                            </td>
+                        </tr>
+                    }
+                
+               
+            </tbody>
+
+        </table>
+        }
+         else
+                {
+                    <div class="alert alert-danger">
+                        <h3>No Products</h3>
+                    </div>
+                }
+
+    </div>
+</div>
+    </div>
+</div>

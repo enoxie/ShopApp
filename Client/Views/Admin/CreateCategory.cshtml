@@ -1,0 +1,26 @@
+@model CategoryModel
+<h1 class="h3">Create Category</h1>
+<hr>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="admin" asp-action="CreateCategory" method="POST">
+            <div class="mb-3">
+                <label asp-for="@Model.Name" class="form-label"></label>
+                <input class="form-control" asp-for="@Model.Name">
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Url" class="form-label"></label>
+                <input class="form-control" asp-for="@Model.Url">
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Description" class="form-label"></label>
+                <textarea class="form-control" asp-for="@Model.Description"> </textarea>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Create Category</button>
+            </div>
+        </form>
+    </div>
+</div>

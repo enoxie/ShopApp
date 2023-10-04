@@ -19,27 +19,39 @@ namespace Business.Concrete
 
         public void Create(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryRepository.Create(entity);
         }
 
         public void Delete(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryRepository.Delete(entity);
         }
 
-        public List<Category> GetAll()
+        public void DeleteProductFromCategory(int ProductId, int CategoryId)
+        {
+            _categoryRepository.DeleteProductFromCategory(ProductId, CategoryId);
+        }
+
+        public List<Category> GetAllCategories()
         {
             return _categoryRepository.GetAll();
         }
 
-        public Category GetById(int id)
+        public Category GetCategoryById(int id)
         {
-            throw new NotImplementedException();
+            return _categoryRepository.GetById(id);
+        }
+
+        public Category GetByIdWithProducts(int categoryId)
+        {
+            return _categoryRepository.GetByIdWithProducts(categoryId);
         }
 
         public void Update(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryRepository.Update(entity);
         }
+
+
     }
 }

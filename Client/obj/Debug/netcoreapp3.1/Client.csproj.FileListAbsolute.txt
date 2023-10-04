@@ -87,8 +87,15 @@ D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Business.dl
 D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Business.pdb
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shop\List.cshtml.g.cs
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Details.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_search.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Search.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ProductList.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateProduct.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditProduct.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CategoryList.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditCategory.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateCategory.cshtml.g.cs
 D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.csprojAssemblyReference.cache
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\staticwebassets\Client.StaticWebAssets.xml
-D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_search.cshtml.g.cs
-D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Search.cshtml.g.cs

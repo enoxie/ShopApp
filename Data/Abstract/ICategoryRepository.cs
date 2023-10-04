@@ -8,6 +8,7 @@ namespace Data.Abstract
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-
+        Category GetByIdWithProducts(int categoryId);
+        void DeleteProductFromCategory(int ProductId, int CategoryId);
     }
 }

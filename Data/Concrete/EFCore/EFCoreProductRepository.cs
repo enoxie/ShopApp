@@ -39,6 +39,17 @@ namespace Data.Concrete.EFCore
             }
         }
 
+        public Product GetProductByIdWithCategories(int id)
+        {
+            using (var db = new ShopContext())
+            {
+                return db.Products
+                         .Where(i => i.ProductId == id)
+                         .Include(i => i.ProductCategories)
+                         .ThenInclude(i => i.Category)
+                         .FirstOrDefault();
+            }
+        }
 
         public Product GetProductDetails(string url)
         {
@@ -80,6 +91,31 @@ namespace Data.Concrete.EFCore
                 .Where(i => i.IsApproved && (i.Name.ToLower().Contains(searchString.ToLower()) || i.Description.ToLower().Contains(searchString.ToLower())))
                 .AsQueryable();
                 return products.ToList();
+            }
+        }
+
+        public void Update(Product entity, int[] categoryId)
+        {
+            using (var db = new ShopContext())
+            {
+                var product = db.Products
+                .Include(i => i.ProductCategories)
+                .FirstOrDefault(i => i.ProductId == entity.ProductId);
+
+                if (product != null)
+                {
+                    product.Name = entity.Name;
+                    product.Price = entity.Price;
+                    product.Description = entity.Description;
+                    product.Url = entity.Url;
+                    product.ImageUrl = entity.ImageUrl;
+                    product.ProductCategories = categoryId.Select(catid => new ProductCategory()
+                    {
+                        ProductId = entity.ProductId,
+                        CategoryId = catid
+                    }).ToList();
+                    db.SaveChanges();
+                }
             }
         }
     }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Business.Abstract;
-using Client.ViewModels;
+using Client.Models;
 using Data.Abstract;
 using Microsoft.AspNetCore.Mvc;
 

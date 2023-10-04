@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Entity;
 
-namespace Client.ViewModels
+namespace Client.Models
 {
 
 

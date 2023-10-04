@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Client.Models;
-using Client.ViewModels;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
 
