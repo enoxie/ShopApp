@@ -109,6 +109,8 @@ namespace Data.Concrete.EFCore
                     product.Description = entity.Description;
                     product.Url = entity.Url;
                     product.ImageUrl = entity.ImageUrl;
+                    product.IsApproved = entity.IsApproved;
+                    product.IsHome = entity.IsHome;
                     product.ProductCategories = categoryId.Select(catid => new ProductCategory()
                     {
                         ProductId = entity.ProductId,

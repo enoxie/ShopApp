@@ -6,7 +6,7 @@ using Entity;
 
 namespace Business.Abstract
 {
-    public interface ICategoryService
+    public interface ICategoryService : IValidator<Category>
     {
         Category GetCategoryById(int id);
         List<Category> GetAllCategories();

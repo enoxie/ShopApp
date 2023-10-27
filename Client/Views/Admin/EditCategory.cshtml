@@ -5,6 +5,23 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-controller="admin" asp-action="EditCategory" method="POST">
+            
+            <div class="products">
+                @if(Model.Products != null){
+              @for(int i = 0; i<Model.Products.Count;i++){
+            <input type="hidden" name="Products[@i].ProductId" value="@Model.Products[@i].ProductId">
+            <input type="hidden" name="Products[@i].Name" value="@Model.Products[@i].Name">
+            <input type="hidden" name="Products[@i].Price" value="@Model.Products[@i].Price">
+            <input type="hidden" name="Products[@i].ImageUrl" value="@Model.Products[@i].ImageUrl">
+            <input type="hidden" name="Products[@i].IsApproved" value="@Model.Products[@i].IsApproved.ToString()">
+                }
+                }
+              
+            </div>
+            
+            
+
+            <div class="text-danger" asp-validation-summary="All"></div>
             <input type="hidden" name="CategoryId" value="@Model.CategoryId">
             <div class="mb-3">
                 <label asp-for="@Model.CategoryId" class="form-label"></label>
@@ -13,14 +30,20 @@
             <div class="mb-3">
                 <label asp-for="@Model.Name" class="form-label"></label>
                 <input class="form-control" asp-for="@Model.Name">
+                <span class="text-danger" asp-validation-for="Name"></span>
+
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.Url" class="form-label"></label>
                 <input class="form-control" asp-for="@Model.Url">
+                <span class="text-danger" asp-validation-for="Url"></span>
+
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.Description" class="form-label"></label>
                 <textarea class="form-control" asp-for="@Model.Description"> </textarea>
+                <span class="text-danger" asp-validation-for="Description"></span>
+
             </div>
 
             <div class="mb-3">
@@ -31,8 +54,12 @@
     <div class="col-md-8">
 <div class="row">
     <div class="col-md-12">
-         @if (Model.Products.Count() > 0)
+       
+         @if (Model.Products != null)
                 {            
+                    if( Model.Products.Count > 0){
+
+                 
         <table class="table table-bordered table-responsive table-sm align-middle mt-4">
             <thead>
                 <tr class="text-center">
@@ -69,6 +96,7 @@
             </tbody>
 
         </table>
+           }
         }
          else
                 {
@@ -81,3 +109,8 @@
 </div>
     </div>
 </div>
+@section Scripts{
+    <script src="/modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+}

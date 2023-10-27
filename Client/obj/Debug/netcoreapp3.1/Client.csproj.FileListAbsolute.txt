@@ -99,3 +99,11 @@ D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views
 D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.csprojAssemblyReference.cache
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\staticwebassets\Client.StaticWebAssets.xml
+D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Account\ConfirmEmail.cshtml.g.cs

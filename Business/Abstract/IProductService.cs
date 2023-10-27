@@ -6,7 +6,7 @@ using Entity;
 
 namespace Business.Abstract
 {
-    public interface IProductService
+    public interface IProductService : IValidator<Product>
     {
         Product GetProductById(int id);
         Product GetProductByIdWithCategories(int id);
@@ -16,9 +16,9 @@ namespace Business.Abstract
         List<Product> GetHomePageProducts();
         List<Product> GetSearchResult(string searchString);
 
-        void Create(Product entity);
-        void Update(Product entity);
-        void Update(Product entity, int[] categoryId);
+        bool Create(Product entity);
+        bool Update(Product entity);
+        bool Update(Product entity, int[] categoryId);
         void Delete(Product entity);
         int GetCountByCategory(string category);
     }

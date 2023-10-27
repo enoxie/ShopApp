@@ -12,6 +12,7 @@ namespace Business.Concrete
     {
         private ICategoryRepository _categoryRepository;
 
+
         public CategoryManager(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
@@ -52,6 +53,10 @@ namespace Business.Concrete
             _categoryRepository.Update(entity);
         }
 
-
+        public string ErrorMessage { get; set; }
+        public bool Validation(Category entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -12,13 +12,19 @@ namespace Business.Concrete
     {
         private IProductRepository _productRepository;
 
+
         public ProductManager(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
-        public void Create(Product entity)
+        public bool Create(Product entity)
         {
-            _productRepository.Create(entity);
+            if (Validation(entity))
+            {
+                _productRepository.Create(entity);
+                return true;
+            }
+            return false;
         }
 
         public void Delete(Product entity)
@@ -61,9 +67,25 @@ namespace Business.Concrete
             return _productRepository.GetSearchResult(searchString);
         }
 
-        public void Update(Product entity)
+        public bool Update(Product entity)
         {
             _productRepository.Update(entity);
+            return true;
+        }
+        public bool Update(Product entity, int[] categoryId)
+        {
+            if (Validation(entity))
+            {
+                if (categoryId.Length == 0)
+                {
+                    ErrorMessage += "Ürün için en az bir kategori seçmelisiniz";
+                    return false;
+                }
+                _productRepository.Update(entity, categoryId);
+                return true;
+            }
+            return false;
+
         }
 
         public Product GetProductByIdWithCategories(int id)
@@ -71,9 +93,23 @@ namespace Business.Concrete
             return _productRepository.GetProductByIdWithCategories(id);
         }
 
-        public void Update(Product entity, int[] categoryId)
+        public string ErrorMessage { get; set; }
+        public bool Validation(Product entity)
         {
-            _productRepository.Update(entity, categoryId);
+            var isValid = true;
+            if (string.IsNullOrEmpty(entity.Name))
+            {
+                ErrorMessage += "ürün ismi girmelisiniz. \n";
+                isValid = false;
+
+            }
+            if (entity.Price < 0)
+            {
+                ErrorMessage += "Ürün fiyatı negatif olamaz. \n";
+                isValid = false;
+            }
+            return isValid;
         }
+
     }
 }

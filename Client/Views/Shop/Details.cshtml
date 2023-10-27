@@ -14,7 +14,7 @@
                 class="btn btn-link p-0 mb-3 text-white">@item.Name</a>
         }
         <div class="row mb-5">
-            <p class="card-text m-0"><strong>Açıklama:</strong> @Model.Product.Description</p>
+            <p class="card-text m-0"><strong>Açıklama:</strong> @Html.Raw(Model.Product.Description)</p>
             <p class="card-text"><strong>Fiyat:</strong> ₺@Model.Product.Price</p>
         </div>
 
