@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Client.EmailServices;
+using Client.Extensions;
 using Client.Identity;
 using Client.Models;
 using Microsoft.AspNetCore.Identity;
@@ -43,13 +44,27 @@ namespace Client.Controllers
 
             if (user == null)
             {
-                ModelState.AddModelError("", "Bu kullanıcı adı ile daha önce hesap oluşturulmamış");
+
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Kullanıcı Bulunamadı",
+                    Message = "Bu kullanıcı adı ile daha önce hesap oluşturulmamış",
+                    AlertType = "warning"
+
+                });
                 return View(model);
             }
 
             if (!await _userManager.IsEmailConfirmedAsync(user))
             {
-                ModelState.AddModelError("", "Hesabınızı onaylayınız!");
+
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Hesabınızı onaylayınız",
+                    Message = "Giriş yaptığınız hesap onaylı değil",
+                    AlertType = "warning"
+
+                });
                 return View(model);
             }
 
@@ -59,7 +74,14 @@ namespace Client.Controllers
             {
                 return Redirect(model.ReturnUrl ?? "~/");
             }
-            ModelState.AddModelError("", "Girilen kullanıcı adı veya şifre hatalı");
+
+            TempData.Put("message", new AlertMessage()
+            {
+                Title = "Giriş Bilgileri Hatalı",
+                Message = "Girilen kullanıcı adı veya şifre hatalı",
+                AlertType = "danger"
+
+            });
 
             return View();
 
@@ -88,6 +110,7 @@ namespace Client.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, "customer");
                 //generate token 
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var url = Url.Action("ConfirmEmail", "Account", new
@@ -95,16 +118,30 @@ namespace Client.Controllers
                     userId = user.Id,
                     token = code
                 });
-                await _emailSender.SendEmailAsync(model.Email, "Hesabınızı Onaylayınız", $"Lütfen email hesabınızı onaylamak için linkte <a href='http://localhost:5000{url}'>tıklayınız</a>");
+                await _emailSender.SendEmailAsync(model.Email, "Hesabınızı Onaylayınız", $"Lütfen email hesabınızı onaylamak için linke <a href='http://localhost:5000{url}'>tıklayınız</a>");
                 return RedirectToAction("Login", "Account");
             }
-            ModelState.AddModelError("Password", "Bilinmeyen bir hata oluştu");
+
+            TempData.Put("message", new AlertMessage()
+            {
+                Title = "Hay Aksi!",
+                Message = "Bilinmeyen bir hata oluştu",
+                AlertType = "warning"
+
+            });
             return View(model);
         }
 
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            TempData.Put("message", new AlertMessage()
+            {
+                Title = "Oturum Kapatıldı.",
+                Message = "Hesabınızdan çıkış yapıldı.",
+                AlertType = "success"
+
+            });
             return Redirect("~/");
         }
 
@@ -112,8 +149,13 @@ namespace Client.Controllers
         {
             if (userId == null)
             {
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Geçersiz token",
+                    Message = "Girdiğiniz token geçersizdir.",
+                    AlertType = "warning"
 
-                CreateMessage("Geçersiz token", "warning");
+                });
                 return View();
             }
             var user = await _userManager.FindByIdAsync(userId);
@@ -122,24 +164,121 @@ namespace Client.Controllers
                 var result = await _userManager.ConfirmEmailAsync(user, token);
                 if (result.Succeeded)
                 {
+                    TempData.Put("message", new AlertMessage()
+                    {
+                        Title = "Hesabınız onaylandı!",
+                        Message = "Hesabınız başarıyla onaylandı!",
+                        AlertType = "success"
 
-                    CreateMessage("Hesabınız onaylandı!", "success");
+                    });
                     return View();
                 }
             }
-            CreateMessage("Hesabınız onaylanmadı!", "danger");
+            TempData.Put("message", new AlertMessage()
+            {
+                Title = "Hesabınız onaylanmadı!",
+                Message = "Hesap onaylama işlemi başarısız!",
+                AlertType = "danger"
+
+            });
+
             return View();
 
         }
 
-        private void CreateMessage(string message, string alertType)
+        public IActionResult ForgotPassword()
         {
-            var msg = new AlertMessage()
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string Email)
+        {
+            if (String.IsNullOrEmpty(Email))
             {
-                Message = message,
-                AlertType = alertType
-            };
-            TempData["message"] = JsonConvert.SerializeObject(msg);
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Geçersiz Mail",
+                    Message = "Geçerli bir mail adresi giriniz",
+                    AlertType = "danger"
+
+                });
+                return View();
+            }
+            var user = await _userManager.FindByEmailAsync(Email);
+
+            if (user == null)
+            {
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Geçersiz Kullanıcı",
+                    Message = "Kullanıcı bulunamadı!",
+                    AlertType = "danger"
+
+                });
+
+                return View();
+            }
+
+            //generate token 
+            var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var url = Url.Action("ResetPassword", "Account", new
+            {
+                userId = user.Id,
+                token = code
+            });
+            await _emailSender.SendEmailAsync(Email, "Reset Password", $"Şifrenizi sıfırlamak için linke <a href='http://localhost:5000{url}'>tıklayınız</a>");
+            TempData.Put("message", new AlertMessage()
+            {
+                Title = "Bağlantı Gönderildi",
+                Message = "Şifre sıfırlama bağlantısı gönderildi!",
+                AlertType = "success"
+
+            });
+            return View();
+        }
+
+        public IActionResult ResetPassword(string userId, string token)
+        {
+            if (userId == null || token == null)
+            {
+                return RedirectToAction("Home", "Index");
+            }
+            var model = new ResetPasswordModel { Token = token };
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return RedirectToAction("Home", "Index");
+            }
+            var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+            if (result.Succeeded)
+            {
+
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Sıfırlama Başarılı",
+                    Message = "Şifreniz başarıyla sıfırlandı!",
+                    AlertType = "success"
+
+                });
+                return RedirectToAction("Login", "Account");
+            }
+            return View(model);
+        }
+
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

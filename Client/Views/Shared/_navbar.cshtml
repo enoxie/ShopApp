@@ -1,7 +1,7 @@
 <nav class="navbar bg-danger navbar-dark navbar-expand-sm" data-bs-theme="dark">
     <div class="container">
         <a href="/" class="navbar-brand">Shop App</a>
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav me-auto">
             <li class="nav-item">
                 <a href="/" class="nav-link">Home</a>
             </li>
@@ -11,27 +11,34 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <li class="nav-item">
-                    <a asp-controller="shop" asp-action="cart" class="nav-link">Cart</a>
+                    <a href="#" class="nav-link">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a asp-controller="shop" asp-action="orders" class="nav-link">Orders </a>
+                    <a href="#" class="nav-link">Orders </a>
                 </li>
-                <li class="nav-item">
-                    <a asp-controller="admin" asp-action="createproduct" class="nav-link">Create Product</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-controller="admin" asp-action="createcategory" class="nav-link">Create Category</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-controller="admin" asp-action="productlist" class="nav-link">Admin Products</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-controller="admin" asp-action="categorylist" class="nav-link">Admin Categories</a>
-                </li>
+
+                @if (User.IsInRole("admin"))
+                {
+                    <li class="nav-item">
+                        <a href="/admin/products" class="nav-link">Admin
+                            Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/categories" class="nav-link">Admin Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/role/list" class="nav-link">Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/user/list" class="nav-link">Users</a>
+                    </li>
+                }
+
+
             }
         </ul>
 
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
 
             @if (User.Identity.IsAuthenticated)
             {

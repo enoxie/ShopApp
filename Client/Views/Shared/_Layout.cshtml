@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="/modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/style.css">
+    @RenderSection("CSS", false)
 </head>
 
 <body>
@@ -17,14 +18,9 @@
         <div class=" container">
             @if (@TempData["message"] != null)
             {
+                <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
                 var message = JsonConvert.DeserializeObject<AlertMessage>(TempData["message"] as String);
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-@message.AlertType">
-                            @message.Message
-                        </div>
-                    </div>
-                </div>
+
             }
             @RenderBody()
         </div>

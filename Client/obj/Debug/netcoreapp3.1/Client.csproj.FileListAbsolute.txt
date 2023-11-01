@@ -96,9 +96,6 @@ D:\dev\source\repos\.NET Core\ShopApp\client\bin\Debug\netcoreapp3.1\Newtonsoft.
 D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CategoryList.cshtml.g.cs
 D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditCategory.cshtml.g.cs
 D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateCategory.cshtml.g.cs
-D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.csprojAssemblyReference.cache
-D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\staticwebassets\Client.StaticWebAssets.xml
 D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -107,3 +104,15 @@ D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Microsoft.E
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Account\ConfirmEmail.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ResultMessage.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RoleList.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateRole.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditRole.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\UserList.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditUser.cshtml.g.cs
+D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.csprojAssemblyReference.cache
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\staticwebassets\Client.StaticWebAssets.xml

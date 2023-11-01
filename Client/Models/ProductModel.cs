@@ -22,7 +22,7 @@ namespace Client.Models
 
         [Required(ErrorMessage = "Price alanı zorunlu bir alandır")]
         [Display(Name = "Price", Prompt = "Enter product price")]
-        [Range(1, 10000, ErrorMessage = "Price için 1-10000 arasında değer girmelisiniz")]
+        [Range(1, 300000, ErrorMessage = "Price için 1-300000 arasında değer girmelisiniz")]
         public double? Price { get; set; }
 
         [Required(ErrorMessage = "Description alanı zorunlu bir alandır")]

@@ -4,27 +4,209 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Client.Extensions;
+using Client.Identity;
 using Client.Models;
 using Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 
 namespace Client.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         private IProductService _productService;
         private ICategoryService _categoryService;
+        private RoleManager<IdentityRole> _roleManager;
+        private UserManager<User> _userManager;
 
-        public AdminController(IProductService productService, ICategoryService categoryService)
+
+
+        public AdminController(IProductService productService,
+                               ICategoryService categoryService,
+                               RoleManager<IdentityRole> roleManager,
+                               UserManager<User> userManager)
         {
             _productService = productService;
             _categoryService = categoryService;
+            _roleManager = roleManager;
+            _userManager = userManager;
         }
+
+
+
+        public IActionResult UserList()
+        {
+            return View(_userManager.Users);
+        }
+
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                var selectedRoles = await _userManager.GetRolesAsync(user);
+                var roles = _roleManager.Roles.Select(i => i.Name);
+                ViewBag.Roles = roles;
+                return View(new UserDetailModel()
+                {
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    EmailConfirmed = user.EmailConfirmed,
+                    Email = user.Email,
+                    SelectedRoles = selectedRoles
+                });
+            }
+            return Redirect("~/admin/user/list");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(UserDetailModel model, string[] selectedRoles)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+
+                if (user != null)
+                {
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.Email = model.Email;
+                    user.EmailConfirmed = model.EmailConfirmed;
+                    user.UserName = model.UserName;
+                    var result = await _userManager.UpdateAsync(user);
+
+                    if (result.Succeeded)
+                    {
+                        var userRoles = await _userManager.GetRolesAsync(user);
+                        selectedRoles = selectedRoles ?? new string[] { };
+                        await _userManager.AddToRolesAsync(user, selectedRoles.Except(userRoles).ToArray<string>());
+                        await _userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedRoles).ToArray<string>());
+                        TempData.Put("message", new AlertMessage()
+                        {
+                            Title = "Kullanıcı Güncellendi",
+                            Message = "Kullanıcı bilgileri başarıyla güncellendi",
+                            AlertType = "success"
+
+                        });
+                        return Redirect("/admin/user/list");
+                    }
+                }
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Kullanıcı Bulunamadı",
+                    Message = "Kullanıcı bilgileri bulunamadığı için güncelleştirme işlemi başarısız oldu.",
+                    AlertType = "danger"
+
+                });
+            }
+            TempData.Put("message", new AlertMessage()
+            {
+                Title = "Eksik veya Hatalı Bilgi Girişi ",
+                Message = "Girdiğiniz bilgileri kontrol ediniz!",
+                AlertType = "warning"
+
+            });
+            return View(model);
+        }
+        public IActionResult RoleList()
+        {
+            return View(_roleManager.Roles);
+        }
+        public IActionResult CreateRole()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateRole(RoleModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _roleManager.CreateAsync(new IdentityRole(model.Name));
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("RoleList");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> EditRole(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            var members = new List<User>();
+            var nonmembers = new List<User>();
+
+            foreach (var user in _userManager.Users)
+            {
+                var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonmembers;
+                list.Add(user);
+            }
+            var model = new RoleDetails()
+            {
+                Role = role,
+                Members = members,
+                NonMembers = nonmembers
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditRole(RoleEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                foreach (var userId in model.IdsToAdd ?? new string[] { })
+                {
+                    var user = await _userManager.FindByIdAsync(userId);
+                    if (user != null)
+                    {
+                        var result = await _userManager.AddToRoleAsync(user, model.RoleName);
+                        if (!result.Succeeded)
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                ModelState.AddModelError("", error.Description);
+                            }
+                        }
+                    }
+                }
+
+                foreach (var userId in model.IdsToDelete ?? new string[] { })
+                {
+                    var user = await _userManager.FindByIdAsync(userId);
+                    if (user != null)
+                    {
+                        var result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
+                        if (!result.Succeeded)
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                ModelState.AddModelError("", error.Description);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return Redirect(model.RoleId);
+        }
+
+
         public IActionResult ProductList()
         {
             return View(new ProductListViewModel()
@@ -54,10 +236,22 @@ namespace Client.Controllers
 
                 if (_productService.Create(entity))
                 {
-                    CreateMessage("kayıt eklendi", "success");
+                    TempData.Put("message", new AlertMessage()
+                    {
+                        Title = "Kayıt eklendiı",
+                        Message = "Ürün kaydı başarıyla eklendiı!",
+                        AlertType = "success"
+
+                    });
                     return RedirectToAction("ProductList");
                 }
-                CreateMessage(_productService.ErrorMessage, "danger");
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Kayıt Eklenemedi!",
+                    Message = _productService.ErrorMessage,
+                    AlertType = "danger"
+
+                });
                 return View(model);
             }
             return View(model);
@@ -135,11 +329,24 @@ namespace Client.Controllers
                 }
                 if (_productService.Update(entity, categoryId))
                 {
-                    CreateMessage("kayıt güncellendi", "success");
+                    TempData.Put("message", new AlertMessage()
+                    {
+                        Title = "Kayıt güncellendi",
+                        Message = "Ürün kaydı başarıyla güncellendi!",
+                        AlertType = "success"
+
+                    });
+
 
                     return RedirectToAction("ProductList");
                 }
-                CreateMessage(_productService.ErrorMessage, "danger");
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Kayıt güncellenemedi",
+                    Message = _productService.ErrorMessage,
+                    AlertType = "danger"
+
+                });
             }
             ViewBag.Categories = _categoryService.GetAllCategories();
             return View(model);
@@ -280,14 +487,6 @@ namespace Client.Controllers
             return Redirect("/admin/categories/" + CategoryId);
         }
 
-        private void CreateMessage(string message, string alertType)
-        {
-            var msg = new AlertMessage()
-            {
-                Message = message,
-                AlertType = alertType
-            };
-            TempData["message"] = JsonConvert.SerializeObject(msg);
-        }
+
     }
 }
