@@ -17,9 +17,17 @@
             <p class="card-text m-0"><strong>Açıklama:</strong> @Html.Raw(Model.Product.Description)</p>
             <p class="card-text"><strong>Fiyat:</strong> ₺@Model.Product.Price</p>
         </div>
-
-        <button type="submit" class="btn btn-light btn-md rounded-0">Add to cart</button>
+        <form asp-controller="Cart" asp-action="AddToCart" method="POST" class="form-inline">
+            <input type="hidden" name="productId" value="@Model.Product.ProductId">
+            <div class="input-group mb-3" style="width:250px">
+                <input type="number" name="quantity" value="1" class="form-control" min="1" step="1">
+                <div class="input-group-text">
+                    <button type="submit" class="btn">
+                        <i class="fas fa-cart-plus pe-2"></i>Add to Cart
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
-
 </div>
 </div>

@@ -5,3 +5,4 @@ D:\dev\source\repos\.NET Core\ShopApp\Entity\obj\Debug\netcoreapp3.1\Entity.Asse
 D:\dev\source\repos\.NET Core\ShopApp\Entity\obj\Debug\netcoreapp3.1\Entity.AssemblyInfo.cs
 D:\dev\source\repos\.NET Core\ShopApp\Entity\obj\Debug\netcoreapp3.1\Entity.dll
 D:\dev\source\repos\.NET Core\ShopApp\Entity\obj\Debug\netcoreapp3.1\Entity.pdb
+D:\dev\source\repos\.NET Core\ShopApp\Entity\obj\Debug\netcoreapp3.1\Entity.csprojAssemblyReference.cache

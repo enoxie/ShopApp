@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = Business
+build_property.ProjectDir = d:\dev\source\repos\.NET Core\ShopApp\Business\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

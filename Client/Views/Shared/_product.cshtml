@@ -10,8 +10,19 @@
     <div class="card-footer text-center">
         <a asp-controller="shop" asp-action="details" asp-route-url="@Model.Url"
             class="btn btn-primary btn-sm">Details</a>
-        <a asp-controller="shop" asp-action="add-to-cart" asp-route-url="@Model.Url" class="btn btn-primary btn-sm">Add
-            to cart</a>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form asp-controller="Cart" asp-action="AddToCart" method="POST" style="display:inline;">
+                <input type="hidden" name="productId" value="@Model.ProductId">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
+            </form>
+        }
+
+
+
+
     </div>
 
 </div>

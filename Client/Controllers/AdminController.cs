@@ -45,6 +45,12 @@ namespace Client.Controllers
             return View(_userManager.Users);
         }
 
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            await _userManager.DeleteAsync(user);
+            return Redirect("~/admin/user/list");
+        }
         public async Task<IActionResult> EditUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);

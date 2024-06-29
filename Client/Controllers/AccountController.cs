@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Abstract;
 using Client.EmailServices;
 using Client.Extensions;
 using Client.Identity;
 using Client.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace Client.Controllers
@@ -18,12 +20,16 @@ namespace Client.Controllers
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
         private IEmailSender _emailSender;
+        private ICartService _cartService;
+        private RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender, ICartService cartService, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _cartService = cartService;
+            _roleManager = roleManager;
         }
 
         public IActionResult Login(string ReturnUrl = null)
@@ -83,7 +89,7 @@ namespace Client.Controllers
 
             });
 
-            return View();
+            return View(model);
 
         }
 
@@ -108,8 +114,15 @@ namespace Client.Controllers
                 Email = model.Email
             };
             var result = await _userManager.CreateAsync(user, model.Password);
+
             if (result.Succeeded)
             {
+                if (await _roleManager.FindByNameAsync("customer") == null)
+                {
+                    await _roleManager.CreateAsync(new IdentityRole("customer"));
+                    Console.WriteLine("123");
+                }
+
                 await _userManager.AddToRoleAsync(user, "customer");
                 //generate token 
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -120,6 +133,19 @@ namespace Client.Controllers
                 });
                 await _emailSender.SendEmailAsync(model.Email, "Hesabınızı Onaylayınız", $"Lütfen email hesabınızı onaylamak için linke <a href='http://localhost:5000{url}'>tıklayınız</a>");
                 return RedirectToAction("Login", "Account");
+
+            }
+            var errorCode = string.Join(", ", result.Errors.Select(x => x.Code));
+            if (errorCode.Contains("DuplicateEmail"))
+            {
+                TempData.Put("message", new AlertMessage()
+                {
+                    Title = "Email Adresi Zaten Mevcut",
+                    Message = "Email adresi daha önceden alınmış. Lütfen farklı email adresi giriniz.",
+                    AlertType = "warning"
+
+                });
+                return View(model);
             }
 
             TempData.Put("message", new AlertMessage()
@@ -164,6 +190,8 @@ namespace Client.Controllers
                 var result = await _userManager.ConfirmEmailAsync(user, token);
                 if (result.Succeeded)
                 {
+                    //cart objesini oluştur
+                    _cartService.InitializeCart(user.Id);
                     TempData.Put("message", new AlertMessage()
                     {
                         Title = "Hesabınız onaylandı!",

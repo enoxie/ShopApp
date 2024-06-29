@@ -73,9 +73,11 @@ namespace ShopApp
       });
       services.AddScoped<IProductRepository, EFCoreProductRepository>();
       services.AddScoped<ICategoryRepository, EFCoreCategoryRepository>();
+      services.AddScoped<ICartRepository, EFCoreCartRepository>();
 
       services.AddScoped<IProductService, ProductManager>();
       services.AddScoped<ICategoryService, CategoryManager>();
+      services.AddScoped<ICartService, CartManager>();
       services.AddScoped<IEmailSender, EmailSender>(i =>
       new EmailSender(
           _configuration["EmailSender:Host"],
@@ -109,6 +111,17 @@ namespace ShopApp
 
       app.UseEndpoints(endpoints =>
       {
+        endpoints.MapControllerRoute(
+                         name: "cart",
+                         pattern: "cart",
+                         defaults: new { controller = "Cart", action = "Index" }
+                     );
+
+        endpoints.MapControllerRoute(
+                                  name: "adminuserdelete",
+                                  pattern: "admin/user/delete/{id?}",
+                                  defaults: new { controller = "admin", action = "deleteuser" }
+                              );
         endpoints.MapControllerRoute(
                           name: "adminuseredit",
                           pattern: "admin/user/{id?}",

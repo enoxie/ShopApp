@@ -45,7 +45,7 @@ namespace Data.Concrete.EFCore
             }
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             using (var db = new TContext())
             {
@@ -53,5 +53,6 @@ namespace Data.Concrete.EFCore
                 db.SaveChanges();
             }
         }
+
     }
 }

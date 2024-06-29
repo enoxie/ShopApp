@@ -57,7 +57,7 @@
                                     </td>
                                     <td>
                                         <a href=" /admin/user/@item.Id" class="btn btn-primary btn-sm me-2">Edit</a>
-                                        <form action="/admin/user/delete" class="d-inline" method="POST">
+                                        <form action="/admin/user/delete/@item.Id" class="d-inline" method="POST">
                                             <input type="hidden" name="UserId" value="@item.Id">
                                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                         </form>

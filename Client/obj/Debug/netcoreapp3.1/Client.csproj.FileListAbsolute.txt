@@ -80,7 +80,6 @@ D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.RazorTargetAssemblyInfo.cache
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.RazorTargetAssemblyInfo.cs
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.Views.pdb
-D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.dll
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.pdb
 D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Business.dll
@@ -116,3 +115,5 @@ D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views
 D:\dev\source\repos\.NET Core\ShopApp\Client\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.csprojAssemblyReference.cache
 D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\staticwebassets\Client.StaticWebAssets.xml
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
+D:\dev\source\repos\.NET Core\ShopApp\Client\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
